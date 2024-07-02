@@ -1,0 +1,19 @@
+Create a Trigger. 
+1)	Log into the trailhead account, and navigate to the gear icon in the top right corner. 
+2)	Click on the developer console and you will be navigated to a new console window. 3)	Click on the File menu in the toolbar, and click on new→ Trigger. 
+4)	Enter the trigger name and the object to be triggered. 
+5)	Enter Name: DropOffTrigger sObject: Drop-Off Point 
+6)	Click on Submit.   
+
+Trigger Code. 
+(This Trigger is to assign the Distance field to the Distance Calculation field. So that we can  assign the distance in the sharing rules.) 
+
+Code: 
+
+trigger DropOffTrigger on Drop_Off_point__c (before insert) 
+{    
+        for(Drop_Off_point__c Drop : Trigger.new)
+    { 
+        Drop.Distance__c = Drop.distance_calculation__c; 
+    } 
+} 
